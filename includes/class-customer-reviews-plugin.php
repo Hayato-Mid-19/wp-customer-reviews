@@ -9,6 +9,7 @@ require_once CUSTOMER_REVIEWS_PLUGIN_PATH . 'includes/class-customer-reviews-rev
 require_once CUSTOMER_REVIEWS_PLUGIN_PATH . 'includes/class-customer-reviews-review-meta-box.php';
 require_once CUSTOMER_REVIEWS_PLUGIN_PATH . 'includes/class-customer-reviews-rest-controller.php';
 require_once CUSTOMER_REVIEWS_PLUGIN_PATH . 'includes/class-customer-reviews-single-blocker.php';
+require_once CUSTOMER_REVIEWS_PLUGIN_PATH . 'includes/class-customer-reviews-import-export.php';
 
 /**
  * Main plugin orchestrator.
@@ -28,12 +29,14 @@ class Customer_Reviews_Plugin {
 		$meta_box = new Customer_Reviews_Review_Meta_Box( $settings );
 		$rest = new Customer_Reviews_REST_Controller( $settings );
 		$single_blocker = new Customer_Reviews_Single_Blocker();
+		$import_export = new Customer_Reviews_Import_Export( $settings );
 
 		$settings->register();
 		$post_type->register();
 		$meta_box->register();
 		$rest->register();
 		$single_blocker->register();
+		$import_export->register();
 	}
 
 	/**
